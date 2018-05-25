@@ -13,20 +13,32 @@ function Comics (props) {
 }
 
 function ComicList (props) {
-  if (props.items.length === 0) return null;
+  /*if (props.items.length === 0) return null;*/
   return (
     <div>
-      {props.items.map (item => <Comic {...item} key={item.title} />)}
+      <table>
+        <thead>
+          <tr style={{textAlign: 'center'}}>
+            <th>Name</th>
+            <th>Cover</th>
+            <th>Written By</th>
+            <th>Starring</th>
+          </tr>
+        </thead>
+        {props.items.map (item => <Comic {...item} key={item.title} />)}
+      </table>
     </div>
   );
 }
 
 function Comic (props) {
   return (
-    <div>
-      <h1>{props.title}</h1>
-      <h2>Written By: {props.by}</h2>
-    </div>
+    <tbody>
+      <td>{props.title}</td>
+      <img src={props.url} alt="Cover" />
+      <td>{props.by}</td>
+      <td>{props.starring}</td>
+    </tbody>
   );
 }
 
